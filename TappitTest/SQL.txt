@@ -1,3 +1,6 @@
+--I used SSMS/SQLServer instead of Postgres so this is the converted import i made
+
+
 DROP TABLE IF EXISTS Sports;
 CREATE TABLE Sports(
 	SportId int identity(1,1),

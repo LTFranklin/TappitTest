@@ -12,6 +12,7 @@ namespace TappitTest
             
         }
 
+        //This links the table relationships together to make manipulating the data easier
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Sports>()

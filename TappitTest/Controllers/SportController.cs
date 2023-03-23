@@ -15,13 +15,16 @@ namespace TappitTest.Controllers
             _databaseContext = databaseContext;
         }
 
+        //Get the id from the Url
         [HttpGet("/Person/{id}")]
         public JsonResult Person(int id)
         {
+            //Get the person requested, include the other tables for easy access
             var person = _databaseContext.People
                 .Include(x => x.FavouriteSports)
                 .ThenInclude(x => x.Sports)
                 .SingleOrDefault(x => x.PersonId == id) ?? null;
+            //make a Dto instead of JSON parsing everything as this can create errors with infinite loops (+ some stuff isn't required like sportID)
             return Json(person?.ToDto());
         }
         [HttpGet("/People")]
